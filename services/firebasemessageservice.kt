@@ -1,4 +1,4 @@
-package com.snapvault.infinity.services
+package com.snapvault..services
 
 import android.annotation.SuppressLint
 import android.app.Notification
@@ -14,14 +14,14 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.snapvault.infinity.MainActivity
-import com.snapvault.infinity.R
+import com.snapvault..MainActivity
+import com.snapvault..R
 
 
 class firebasemessageservice : FirebaseMessagingService() {
 
     private val TAG = "firebasemessageservice"
-    var NOTIFICATION_CHANNEL_ID = "com.snapvault.infinity"
+    var NOTIFICATION_CHANNEL_ID = "com.snapvault."
     val NOTIFICATION_ID = 100
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {

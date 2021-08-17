@@ -1,4 +1,4 @@
-package com.snapvault.infinity
+package com..
 
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.concept.fetch.Client

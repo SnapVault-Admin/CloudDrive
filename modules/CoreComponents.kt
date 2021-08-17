@@ -1,7 +1,7 @@
-package com.snapvault.infinity.modules
+package com...modules
 
 import android.app.Application
-import com.snapvault.infinity.DownloadService
+import com...DownloadService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

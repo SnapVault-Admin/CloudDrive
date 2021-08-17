@@ -1,4 +1,4 @@
-package com.snapvault.infinity
+package com..
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -47,14 +47,7 @@ import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
-    private val client = OkHttpClient()
-    init {
-        System.loadLibrary("api-keys")
-    }
-    external fun getServer(token: String) : String
-    external fun getVersion() : String
-    external fun getBaseSig() : String
-    external fun getRandomBase() : String
+
 
     private var app_version = getVersion()
 
@@ -66,9 +59,7 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_SECURE)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-        proxy_check()
-        app_tamper_check()
-        val device_valid = (!adb_status() && !apk_debuggable() && display_flag() && !device_root() && !checkEmulator())
+
 
 
         if (midtrek()?.let { getServer(it) } != "null"){
@@ -87,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                                     if (!isFinishing) {
                                         val update_dialog = AlertDialog.Builder(this@MainActivity)
                                             .setTitle("New Update !!!")
-                                            .setMessage("Please update to latest version of Infinity.")
+                                            .setMessage("Please update to latest version of .")
                                             .setCancelable(false)
                                             .setPositiveButton("Update", null)
                                             .show()
@@ -144,7 +135,7 @@ class MainActivity : AppCompatActivity() {
                 update_check.start()
             }
         } else {
-            alertbox_template("App Unstable", "Error Code : 009 Please reinstall the app from the admin via telegram @Infinitysvbot")
+            alertbox_template("App Unstable", "Error Code : 009 Please reinstall the app from the  ")
         }
     }
 
@@ -154,7 +145,7 @@ class MainActivity : AppCompatActivity() {
     fun midtrek(): String {
         val signatureList: List<String>
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
-            val sig = packageManager.getPackageInfo("com.snapvault.infinity", PackageManager.GET_SIGNING_CERTIFICATES).signingInfo
+            val sig = packageManager.getPackageInfo("com..", PackageManager.GET_SIGNING_CERTIFICATES).signingInfo
             signatureList = if (sig.hasMultipleSigners()) {
                 // Send all with apkContentsSigners
                 sig.apkContentsSigners.map {
@@ -209,59 +200,7 @@ class MainActivity : AppCompatActivity() {
     
 
 
-    fun safetynet_device(nonce_string: String, api_key: String?) {
-        val charset = Charsets.UTF_8;
-        val nonce = nonce_string.toByteArray(charset);
-
-        if (GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
-            if (api_key != null) {
-                SafetyNet.getClient(this).attest(nonce, api_key)
-                    .addOnSuccessListener(this) {
-                        
-                            if (obj != null) {
-                                if (java.lang.Boolean.parseBoolean(obj.getString("status"))) {
-                                    try {
-                                        var url = obj.getString("redirect_url")
-                                        val intent = Intent(this@MainActivity, Render::class.java)
-                                        intent.putExtra("url", url)
-                                        startActivity(intent)
-                                        finish()
-                                    } catch (e: JSONException) {
-                                        e.printStackTrace()
-                                    }
-                                } else {
-                                    alertbox_template(
-                                        "Server Error", "Err Code : 008 Contact the ADMIN via telegram @Infinitysvbot. Reason : " + obj.getString("reason")
-                                    )
-                                }
-                            } else {
-                                alertbox_template("Server Error", "Err Code : 005 Contact the ADMIN via telegram @Infinitysvbot")
-                            }
-                        })
-                        signedAttestation_thread.start()
-                    }
-                    .addOnFailureListener(this) { e ->
-                        if (e is ApiException) {
-                            val apiException = e as ApiException
-                            alertbox_template(
-                                "Server Error",
-                                "Err Code : 007 Contact the ADMIN via telegram @Infinitysvbot"
-                            )
-                        } else {
-                            alertbox_template(
-                                "Server Error",
-                                "Err Code : 007 Contact the ADMIN via telegram @Infinitysvbot"
-                            )
-                        }
-                    }
-            }
-        } else {
-            alertbox_template(
-                "Server Error",
-                "Err Code : 006 Contact the ADMIN via telegram @Infinitysvbot"
-            )
-        }
-    }
+   
 
 
     
@@ -332,46 +271,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun adb_status(): Boolean {
 
-    }
-
-    fun device_root(): Boolean {
-
-    }
-
-    fun apk_debuggable(): Boolean {
-
-    }
-
-    fun display_flag(): Boolean {
-
-    }
-
-    fun checkEmulator(): Boolean {
-        
-    }
-
-
-
-    fun internetCheck(context : Context): Boolean {
-       
-    }
-
-
-    fun app_tamper_check() {
-   
-    }
-
-
-
-    fun proxy_check() {
-
-    }
-
-
-    fun isproxy(context: Context): Boolean {
-
-    }
 
 }

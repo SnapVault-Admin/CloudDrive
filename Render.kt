@@ -1,4 +1,4 @@
-package com.snapvault.infinity
+package com..
 
 import android.content.Context
 //import android.content.Intent
@@ -64,7 +64,7 @@ class Render : AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-        proxy_check()
+
 
         sessionUseCases = SessionUseCases(store, sessionManager)
         val downloadUseCases = DownloadsUseCases(store)
@@ -82,14 +82,8 @@ class Render : AppCompatActivity() {
         )
 
 
-        val device_valid = (!adb_status() && !apk_debuggable() && display_flag() && !device_root() && !checkEmulator())
 
-        if (url != null) {
-            if (device_valid && !isproxy(this)) {
-                app_tamper_check()
-                this.session.url = url
-            }
-        }
+
 
         val session_size = sessionManager.sessions.size
         if (session_size < 1){
